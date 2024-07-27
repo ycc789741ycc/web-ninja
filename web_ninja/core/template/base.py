@@ -1,10 +1,12 @@
 from abc import ABC, abstractmethod
-from typing import Dict
+from typing import Generic, TypeVar
+
+T = TypeVar("T")
 
 
-class BaseTemplate(ABC):
+class BaseTemplate(ABC, Generic[T]):
     @abstractmethod
-    def render(self, context: Dict[str, str]) -> None:
+    def render(self, context: T) -> None:
         """Render the template with the given context."""
         raise NotImplementedError
 
