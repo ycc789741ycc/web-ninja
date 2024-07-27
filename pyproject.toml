@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "web-ninja"
+version = "0.1.0"
+description = "Help your to speed up the process to build the web project."
+authors = ["Yoshi Gao <yoshi4868686@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
