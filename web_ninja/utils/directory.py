@@ -21,10 +21,10 @@ def create_directory(path: Path):
             logger.info(f"Failed to create directory: {e}")
 
 
-def create_file(file_path: Path):
+def create_file(file_path: Path, content: str = ""):
     try:
         with open(file_path, "w") as file:
-            file.write("Hello, World!")
+            file.write(content)
         logger.info(f"File created at: {file_path}")
     except PermissionError:
         logger.info(
@@ -33,7 +33,7 @@ def create_file(file_path: Path):
         try:
             os.chmod(file_path.parent, 0o777)
             with open(file_path, "w") as file:
-                file.write("Hello, World!")
+                file.write(content)
             logger.info(f"File created at: {file_path}")
         except Exception as e:
             logger.info(f"Failed to create file: {e}")
