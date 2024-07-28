@@ -19,7 +19,7 @@ class LayeredArchitectureTemplate(DirectoryTemplate[Dict[str, Any]]):
             base_dir / "external",
             base_dir / "extension",
         ]
-        self.child_files = [
+        self.child_file_paths = [
             base_dir / "api/__init__.py",
             base_dir / "api/v1/__init__.py",
             base_dir / "api/v1/endpoints/__init__.py",

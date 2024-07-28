@@ -11,10 +11,10 @@ class DirectoryTemplate(BaseTemplate[T]):
     def __init__(self, base_dir: Path) -> None:
         self.base_dir = base_dir
         self.child_dirs: List[Path] = []
-        self.child_files: List[Path] = []
+        self.child_file_paths: List[Path] = []
 
     def generate(self):
         for child_dir in self.child_dirs:
             create_directory(child_dir)
-        for child_file in self.child_files:
-            create_file(child_file)
+        for child_file_path in self.child_file_paths:
+            create_file(child_file_path)
