@@ -9,9 +9,9 @@ from web_ninja.core.template.directory import DirectoryTemplate
 
 class FakeDirectoryTemplate(DirectoryTemplate[Dict[str, Path]]):
     def render(self, context: Dict[str, Path]) -> None:
-        self.child_dirs = [self.path / child_dir for child_dir in context["child_dirs"]]
+        self.child_dirs = [self.base_dir / child_dir for child_dir in context["child_dirs"]]
         self.child_files = [
-            self.path / child_file for child_file in context["child_files"]
+            self.base_dir / child_file for child_file in context["child_files"]
         ]
 
 
@@ -33,7 +33,7 @@ def temp_files():
 
 def test_directory_template(temp_dirs: List[Path], temp_files: List[Path]):
     path = Path("/tmp")
-    template = FakeDirectoryTemplate(path=path)
+    template = FakeDirectoryTemplate(base_dir=path)
     context = {
         "child_dirs": temp_dirs,
         "child_files": temp_files,

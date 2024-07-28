@@ -5,31 +5,31 @@ from web_ninja.core.template.directory import DirectoryTemplate
 
 
 class LayeredArchitectureTemplate(DirectoryTemplate[Dict[str, Any]]):
-    def __init__(self, path: Path) -> None:
-        super().__init__(path)
+    def __init__(self, base_dir: Path) -> None:
+        super().__init__(base_dir)
         self.child_dirs = [
-            path / "api",
-            path / "api/v1",
-            path / "api/v1/endpoints",
-            path / "service",
-            path / "repository",
-            path / "model",
-            path / "dao",
-            path / "schema",
-            path / "external",
-            path / "extension",
+            base_dir / "api",
+            base_dir / "api/v1",
+            base_dir / "api/v1/endpoints",
+            base_dir / "service",
+            base_dir / "repository",
+            base_dir / "model",
+            base_dir / "dao",
+            base_dir / "schema",
+            base_dir / "external",
+            base_dir / "extension",
         ]
         self.child_files = [
-            path / "api/__init__.py",
-            path / "api/v1/__init__.py",
-            path / "api/v1/endpoints/__init__.py",
-            path / "service/__init__.py",
-            path / "repository/__init__.py",
-            path / "model/__init__.py",
-            path / "dao/__init__.py",
-            path / "schema/__init__.py",
-            path / "external/__init__.py",
-            path / "extension/__init__.py",
+            base_dir / "api/__init__.py",
+            base_dir / "api/v1/__init__.py",
+            base_dir / "api/v1/endpoints/__init__.py",
+            base_dir / "service/__init__.py",
+            base_dir / "repository/__init__.py",
+            base_dir / "model/__init__.py",
+            base_dir / "dao/__init__.py",
+            base_dir / "schema/__init__.py",
+            base_dir / "external/__init__.py",
+            base_dir / "extension/__init__.py",
         ]
 
     def render(self, context: Dict[str, Any]) -> None:

@@ -8,8 +8,8 @@ T = TypeVar("T")
 
 
 class DirectoryTemplate(BaseTemplate[T]):
-    def __init__(self, path: Path) -> None:
-        self.path = path
+    def __init__(self, base_dir: Path) -> None:
+        self.base_dir = base_dir
         self.child_dirs: List[Path] = []
         self.child_files: List[Path] = []
 
