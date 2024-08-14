@@ -2,7 +2,6 @@ from pathlib import Path
 from web_ninja.core.template.module import ModuleTemplate, ModuleFile
 
 
-
 class MessageBrokerTemplate(ModuleTemplate):
     def __init__(self, base_dir: Path) -> None:
         super().__init__(base_dir)
@@ -14,6 +13,9 @@ class MessageBrokerTemplate(ModuleTemplate):
         message_broker_celery = ""
         with open(Path("web_ninja/modules/message_broker/celery.py"), "r") as f:
             message_broker_celery = f.read()
+        docker_compose_file = ""
+        with open(Path("web_ninja/modules/message_broker/docker-compose.yml"), "r") as f:
+            docker_compose_file = f.read()
 
         self.module_files = [
             ModuleFile(
@@ -27,5 +29,9 @@ class MessageBrokerTemplate(ModuleTemplate):
             ModuleFile(
                 child_path=Path("message_broker/celery.py"),
                 content=message_broker_celery,
-            )
+            ),
+            ModuleFile(
+                child_path=Path("message_broker/docker-compose.yml"),
+                content=docker_compose_file,
+            ),
         ]

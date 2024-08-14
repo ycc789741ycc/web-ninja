@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  rabbitmq:
+      image: rabbitmq:3.8.0-management
+      environment:
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASS: guest
+      ports:
+        - 15672:15672
+        - 5672:5672
+      healthcheck:
+        test: [ "CMD", "rabbitmqctl", "status"]
+        interval: 5s
+        timeout: 10s
+        retries: 5
+
+# Example of a docker-compose.yaml file for a RabbitMQ message broker.
