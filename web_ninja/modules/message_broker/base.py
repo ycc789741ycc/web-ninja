@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Callable
+from typing import Callable, Dict
 
 
 class BaseEventBroker(ABC):
@@ -28,7 +28,7 @@ class BaseEventBroker(ABC):
         retries: int = 3,
         retry_delay_in_seconds: float = 5,
         task_time_limit_in_seconds: int = 300,
-        **kwargs
+        **kwargs,
     ) -> None:
         """Subscribes to an event
         Args:

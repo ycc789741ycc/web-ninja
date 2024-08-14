@@ -8,9 +8,7 @@ from web_ninja.core.template.module import ModuleFile, ModuleTemplate
 
 
 class FakeModuleTemplate(ModuleTemplate):
-    def __init__(
-        self, base_dir: Path, child_dirs: List[Path], module_files: List[ModuleFile]
-    ) -> None:
+    def __init__(self, base_dir: Path, child_dirs: List[Path], module_files: List[ModuleFile]) -> None:
         super().__init__(base_dir)
         self.child_dirs = child_dirs
         self.module_files = module_files

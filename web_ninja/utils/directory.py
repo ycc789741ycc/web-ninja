@@ -10,9 +10,7 @@ def create_directory(path: Path):
         path.mkdir(parents=True, exist_ok=True)
         logger.info(f"Directory created at: {path}")
     except PermissionError:
-        logger.info(
-            f"Permission denied: Cannot create {path}. Attempting to change permissions..."
-        )
+        logger.info(f"Permission denied: Cannot create {path}. Attempting to change permissions...")
         try:
             os.chmod(path.parent, 0o777)
             path.mkdir(parents=True, exist_ok=True)
@@ -27,9 +25,7 @@ def create_file(file_path: Path, content: str = ""):
             file.write(content)
         logger.info(f"File created at: {file_path}")
     except PermissionError:
-        logger.info(
-            f"Permission denied: Cannot write to {file_path}. Attempting to change permissions..."
-        )
+        logger.info(f"Permission denied: Cannot write to {file_path}. Attempting to change permissions...")
         try:
             os.chmod(file_path.parent, 0o777)
             with open(file_path, "w") as file:

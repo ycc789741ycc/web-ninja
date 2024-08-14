@@ -1,4 +1,4 @@
-from typing import Dict, Callable
+from typing import Callable, Dict
 
 from celery import Celery
 
@@ -27,5 +27,9 @@ class CeleryEventBroker(BaseEventBroker):
             name=event_name,
             acks_late=True,
             reject_on_worker_lost=False,
-            retry_kwargs={'max_retries': retries, 'countdown': retry_delay_in_seconds, 'time_limit': task_time_limit_in_seconds},
+            retry_kwargs={
+                "max_retries": retries,
+                "countdown": retry_delay_in_seconds,
+                "time_limit": task_time_limit_in_seconds,
+            },
         )(event_handler)
